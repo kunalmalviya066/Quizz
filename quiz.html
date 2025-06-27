@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div id="userInfoBox">
+      <h2>Enter Your Details</h2>
+      <input type="text" id="userName" placeholder="Your Name" />
+      <input type="text" id="userId" placeholder="Mobile Number" />
+      <button onclick="proceedToQuizSelection()">Proceed</button>
+    </div>
+    
+    
+
+    <div id="quizInfo" style="display:none;">
+      <h2>Select Quiz</h2>
+      <button onclick="startQuiz(1)">Quiz 1</button>
+      <button onclick="startQuiz(2)">Quiz 2</button>
+      <button onclick="startQuiz(3)">Quiz 3</button>
+    </div>
+
+    <div id="quizBox" style="display:none;">
+      <div id="timer">Time Left: 20:00</div>
+      <div id="questionBox"></div>
+      <button onclick="nextQuestion()">Next / Skip</button>
+    </div>
+    
+  </div>
+  <script src="quiz.js"></script>
+</body>
+</html>

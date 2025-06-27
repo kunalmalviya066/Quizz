@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz Result</h1>
+    <div id="resultBox"></div>
+    <a href="quiz.html">Try Another Quiz</a>
+  </div>
+  <script>
+    const result = JSON.parse(localStorage.getItem('result'));
+    if (result) {
+      document.getElementById('resultBox').innerHTML = `
+        <p>Name: ${result.name}</p>
+        <p>ID: ${result.id}</p>
+        <p>Correct: ${result.correct}</p>
+        <p>Incorrect: ${result.incorrect}</p>
+        <p>Skipped: ${result.skipped}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

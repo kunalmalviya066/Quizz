@@ -43,28 +43,84 @@ const quizzes = {
     { q: "Give Answer For The Series : 4, 8, 12, 16, ?", options: ["18", "19", "20", "21"], a: "20" },
     { q: "Give Answer For The Series : 15, 30, 45, 60, ?", options: ["75", "76", "77", "78"], a: "75" }
   ],
-  3: [
-    { q: "Give Answer For The Series : 3, 6, 12, 24, 48, ?", options: ["72", "84", "96", "108"], a: "96" },
-    { q: "Give Answer For The Series : 5, 11, 17, 23, ?", options: ["27", "29", "31", "33"], a: "29" },
-    { q: "Give Answer For The Series : 2, 3, 5, 8, ?", options: ["11", "12", "13", "14"], a: "13" },
-    { q: "Give Answer For The Series : 4, 16, 36, 64, ?", options: ["100", "110", "120", "144"], a: "144" },
-    { q: "Give Answer For The Series : 7, 14, 28, 56, ?", options: ["84", "98", "112", "126"], a: "112" },
-    { q: "Give Answer For The Series : 10, 20, 40, 80, ?", options: ["120", "140", "160", "180"], a: "160" },
-    { q: "Give Answer For The Series : 1, 1, 2, 3, 5, ?", options: ["7", "8", "9", "10"], a: "8" },
-    { q: "Give Answer For The Series : 50, 45, 40, 35, ?", options: ["25", "30", "32", "33"], a: "30" },
-    { q: "Give Answer For The Series : 3, 9, 27, 81, ?", options: ["243", "256", "270", "300"], a: "243" },
-    { q: "Give Answer For The Series : 6, 12, 24, 48, ?", options: ["60", "72", "84", "96"], a: "96" },
-    { q: "Give Answer For The Series : 11, 13, 17, 19, ?", options: ["23", "25", "27", "29"], a: "23" },
-    { q: "Give Answer For The Series : 5, 10, 20, 40, ?", options: ["60", "80", "100", "120"], a: "80" },
-    { q: "Give Answer For The Series : 15, 30, 45, 60, ?", options: ["75", "90", "105", "120"], a: "75" },
-    { q: "Give Answer For The Series : 8, 16, 32, 64, ?", options: ["96", "112", "128", "144"], a: "128" },
-    { q: "Give Answer For The Series : 100, 95, 90, 85, ?", options: ["75", "80", "85", "90"], a: "80" },
-    { q: "Give Answer For The Series : 1, 4, 9, 16, ?", options: ["20", "24", "25", "30"], a: "25" },
-    { q: "Give Answer For The Series : 20, 18, 16, 14, ?", options: ["10", "11", "12", "13"], a: "12" },
-    { q: "Give Answer For The Series : 13, 17, 19, 23, ?", options: ["27", "29", "31", "33"], a: "29" },
-    { q: "Give Answer For The Series : 2, 6, 12, 20, ?", options: ["24", "28", "30", "32"], a: "30" },
-    { q: "Give Answer For The Series : 7, 14, 21, 28, ?", options: ["32", "35", "36", "39"], a: "35" }
-  ]
+ 3: [
+  { q: "Give Answer For The Series : 2, 5, 10, 17, 26, ?", options: ["35", "36", "37", "38"], a: "37" }, // Easy
+  { q: "Give Answer For The Series : 3, 6, 12, 24, 48, ?", options: ["72", "84", "96", "108"], a: "96" }, // Easy
+  { q: "Give Answer For The Series : 12, 15, 21, 30, 42, ?", options: ["51", "54", "56", "57"], a: "57" }, // Easy
+  { q: "Give Answer For The Series : 54, 48, 42, 36, 30, ?", options: ["24", "26", "27", "28"], a: "24" }, // Easy
+  { q: "Give Answer For The Series : 7, 14, 21, 28, 35, ?", options: ["38", "39", "40", "42"], a: "42" }, // Easy
+  { q: "Give Answer For The Series : 8, 13, 23, 38, 58, ?", options: ["70", "78", "80", "83"], a: "83" }, // Moderate
+  { q: "Give Answer For The Series : 5, 11, 24, 51, 106, ?", options: ["201", "208", "217", "220"], a: "217" }, // Moderate
+  { q: "Give Answer For The Series : 2, 6, 12, 20, 30, ?", options: ["36", "38", "40", "42"], a: "42" }, // Moderate
+  { q: "Give Answer For The Series : 18, 20, 24, 32, 48, ?", options: ["64", "72", "80", "88"], a: "80" }, // Moderate
+  { q: "Give Answer For The Series : 125, 136, 149, 164, 181, ?", options: ["190", "195", "200", "205"], a: "200" }, // Moderate
+  { q: "Give Answer For The Series : 4, 12, 36, 108, 324, ?", options: ["648", "729", "864", "972"], a: "972" }, // Moderate
+  { q: "Give Answer For The Series : 1, 3, 7, 13, 21, ?", options: ["27", "29", "30", "31"], a: "31" }, // Moderate
+  { q: "Give Answer For The Series : 32, 35, 41, 50, 62, ?", options: ["72", "75", "77", "78"], a: "77" }, // Moderate
+  { q: "Give Answer For The Series : 100, 92, 86, 82, 80, ?", options: ["79", "80", "81", "82"], a: "80" }, // Moderate
+  { q: "Give Answer For The Series : 6, 13, 25, 45, 77, ?", options: ["111", "120", "126", "130"], a: "126" }, // Moderate
+  { q: "Give Answer For The Series : 2, 3, 5, 7, 11, 13, ?", options: ["15", "16", "17", "18"], a: "17" }, // Difficult
+  { q: "Give Answer For The Series : 1, 1, 2, 4, 7, 11, 16, ?", options: ["20", "21", "22", "23"], a: "22" }, // Difficult
+  { q: "Give Answer For The Series : 5, 6, 15, 50, 207, ?", options: ["800", "930", "1023", "1044"], a: "1044" }, // Difficult
+  { q: "Give Answer For The Series : 8, 4, 12, 6, 18, 9, ?", options: ["24", "26", "27", "28"], a: "27" }, // Difficult
+  { q: "Give Answer For The Series : 3, 7, 16, 35, 74, ?", options: ["141", "149", "153", "159"], a: "153" } // Difficult
+],
+4: [
+    { q: "Give Answer For The Series : A, C, E, G, ?", options: ["I", "H", "J", "K"], a: "I" },
+    { q: "Give Answer For The Series : B, E, H, K, ?", options: ["N", "M", "L", "O"], a: "N" },
+    { q: "Give Answer For The Series : M, N, O, P, ?", options: ["Q", "R", "S", "T"], a: "Q" },
+    { q: "Give Answer For The Series : Z, X, V, T, ?", options: ["R", "S", "Q", "P"], a: "R" },
+    { q: "Give Answer For The Series : D, H, L, P, ?", options: ["T", "S", "U", "V"], a: "T" },
+    { q: "Give Answer For The Series : F, J, N, R, ?", options: ["V", "U", "W", "X"], a: "V" },
+    { q: "Give Answer For The Series : B, D, G, K, ?", options: ["P", "O", "N", "M"], a: "P" },
+    { q: "Give Answer For The Series : T, Q, N, K, ?", options: ["H", "I", "J", "L"], a: "H" },
+    { q: "Give Answer For The Series : Y, U, Q, M, ?", options: ["I", "H", "J", "G"], a: "I" },
+    { q: "Give Answer For The Series : C, G, L, R, ?", options: ["Z", "X", "Y", "W"], a: "Z" },
+    { q: "Give Answer For The Series : D, G, K, P, ?", options: ["V", "U", "W", "X"], a: "V" },
+    { q: "Give Answer For The Series : Z, W, S, N, ?", options: ["H", "I", "J", "K"], a: "H" },
+    { q: "Give Answer For The Series : E, H, L, Q, ?", options: ["W", "V", "U", "X"], a: "W" },
+    { q: "Give Answer For The Series : A, E, J, P, ?", options: ["W", "V", "X", "Y"], a: "W" },
+    { q: "Give Answer For The Series : M, J, F, A, ?", options: ["U", "T", "V", "W"], a: "U" },
+    { q: "Give Answer For The Series : G, L, R, Y, ?", options: ["G", "H", "F", "E"], a: "G" },
+    { q: "Give Answer For The Series : Q, N, J, E, ?", options: ["Y", "X", "W", "V"], a: "Y" },
+    { q: "Give Answer For The Series : H, M, S, X, ?", options: ["D", "C", "E", "B"], a: "D" },
+    { q: "Give Answer For The Series : T, P, K, E, ?", options: ["X", "W", "Y", "Z"], a: "X" },
+    { q: "Give Answer For The Series : V, S, O, J, ?", options: ["C", "B", "D", "E"], a: "C" }
+],
+5: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+6: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+7: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+8: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+9: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+10: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+11: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+12: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+13: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+14: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+],
+15: [
+    { q: "coming soon", options: ["", "", "", ""], a: "" }
+]
+
 };
 
 let currentQuiz = [];

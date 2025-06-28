@@ -12,37 +12,29 @@
       <h2>Enter Your Details</h2>
       <input type="text" id="userName" placeholder="Your Name" />
       <input type="text" id="userId" placeholder="Mobile Number" />
-      <button onclick="proceedToQuizSelection()">Proceed</button>
+      <button type="button" onclick="proceedToQuizSelection()">Proceed</button>
     </div>
-    
-    
 
     <div id="quizInfo" style="display:none;">
       <h2>Select Quiz</h2>
-      <button onclick="startQuiz(1)">Number Series1</button>
-      <button onclick="startQuiz(2)">Number Series2</button>
-      <button onclick="startQuiz(3)">Number Series3</button>
-      <button onclick="startQuiz(4)">Alpha Series1</button>
-      <button onclick="startQuiz(5)">AlphaNumeric Series1</button>
-      <button onclick="startQuiz(6)">AlphaNumeric Series2</button>
-      <button onclick="startQuiz(7)">AlphaNumeric Series3</button>
-      <button onclick="startQuiz(8)">Calender 1</button>
-      <button onclick="startQuiz(9)">Calender 2</button>
-      <button onclick="startQuiz(10)">Calender 3</button>
-      <button onclick="startQuiz(11)">Comming Soon</button>
-      <button onclick="startQuiz(12)">Comming Soon</button>
-      <button onclick="startQuiz(13)">Comming Soon</button>
-      <button onclick="startQuiz(14)">Comming Soon</button>
-      <button onclick="startQuiz(15)">Comming Soon</button>
-      
+      <button type="button" onclick="startQuiz(1)">Number Series1</button>
+      <button type="button" onclick="startQuiz(2)">Number Series2</button>
+      <button type="button" onclick="startQuiz(3)">Number Series3</button>
+      <button type="button" onclick="startQuiz(4)">Alpha Series1</button>
+      <button type="button" onclick="startQuiz(5)">AlphaNumeric Series1</button>
+      <button type="button" onclick="startQuiz(6)">AlphaNumeric Series2</button>
+      <button type="button" onclick="startQuiz(7)">AlphaNumeric Series3</button>
+      <button type="button" onclick="startQuiz(8)">Calender 1</button>
+      <button type="button" onclick="startQuiz(9)">Calender 2</button>
+      <button type="button" onclick="startQuiz(10)">Calender 3</button>
     </div>
 
     <div id="quizBox" style="display:none;">
       <div id="timer">Time Left: 20:00</div>
       <div id="questionBox"></div>
-      <button onclick="nextQuestion()">Next / Skip</button>
+      <button type="button" onclick="backQuestion()">Back</button>
+      <button type="button" onclick="nextQuestion()">Next / Skip</button>
     </div>
-    
   </div>
   <script src="quiz.js"></script>
 </body>

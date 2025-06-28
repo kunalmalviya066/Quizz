@@ -3,25 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Result</title>
+  <title>Quiz Result</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Quiz Result</h1>
-    <div id="resultBox"></div>
-    <a href="quiz.html">Try Another Quiz</a>
+    <h1>🎯 Quiz Result</h1>
+
+    <!-- Summary Section -->
+    <div id="summaryBox" class="result-section">
+      <!-- Filled by JS -->
+    </div>
+
+    <!-- Incorrect Questions Section -->
+    <div id="incorrectBox" class="result-section">
+      <h3>Incorrect Questions Review</h3>
+      <ul id="incorrectList"></ul>
+    </div>
+
+    <!-- Buttons -->
+    <div class="result-buttons">
+      <a href="index.html" class="btn">🏠 Home</a>
+      <a href="quiz.html" class="btn">📝 Try Another Quiz</a>
+      <button type="button" class="btn" onclick="retakeSameQuiz()">🔄 Retake Same Quiz</button>
+    </div>
   </div>
+
   <script>
     const result = JSON.parse(localStorage.getItem('result'));
     if (result) {
-      document.getElementById('resultBox').innerHTML = `
-        <p>Name: ${result.name}</p>
-        <p>ID: ${result.id}</p>
-        <p>Correct: ${result.correct}</p>
-        <p>Incorrect: ${result.incorrect}</p>
-        <p>Skipped: ${result.skipped}</p>
+      // Fill summary
+      document.getElementById('summaryBox').innerHTML = `
+        <p><strong>Name:</strong> ${result.name}</p>
+        <p><strong>ID:</strong> ${result.id}</p>
+        <p><strong>Correct:</strong> ${result.correct}</p>
+        <p><strong>Incorrect:</strong> ${result.incorrect}</p>
+        <p><strong>Skipped:</strong> ${result.skipped}</p>
       `;
+
+      // Fill incorrect list
+      const incorrectQs = result.details.filter(d => d && d.selected !== d.correct);
+      if (incorrectQs.length === 0) {
+        document.getElementById('incorrectList').innerHTML = `<li>🎉 No incorrect answers! Well done!</li>`;
+      } else {
+        document.getElementById('incorrectList').innerHTML = incorrectQs.map(d => `
+          <li>
+            <strong>Q:</strong> ${d.q}<br>
+            <strong>Your Answer:</strong> ${d.selected || 'None'}<br>
+            <strong>Correct Answer:</strong> ${d.correct}
+          </li>
+        `).join('');
+      }
+    }
+
+    function retakeSameQuiz() {
+      window.history.back();
     }
   </script>
 </body>

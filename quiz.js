@@ -1,3 +1,4 @@
+// quizzes = { your existing data (already in your file) }
 const quizzes = {
   1: [
     { q: "Give Answer For The Series : 7, 14, 28, 56, ?, 224", options: ["84", "98", "112", "126"], a: "112" },
@@ -133,6 +134,7 @@ let timeLeft = 1200;
 
 let userName = '';
 let userId = '';
+let userAnswers = [];
 
 function proceedToQuizSelection() {
   const nameInput = document.getElementById('userName').value.trim();
@@ -157,6 +159,7 @@ function startQuiz(quizNumber) {
   incorrect = 0;
   skipped = 0;
   timeLeft = 1200;
+  userAnswers = [];
   document.getElementById('quizInfo').style.display = 'none';
   document.getElementById('quizBox').style.display = 'block';
   startTimer();
@@ -184,9 +187,9 @@ function showQuestion() {
   }
   const qObj = currentQuiz[currentIndex];
   const optionsHtml = qObj.options.map(opt => `
-    <label><input type="radio" name="option" value="${opt}"> ${opt}</label>
+    <label><input type="radio" name="option" value="${opt}" ${userAnswers[currentIndex] && userAnswers[currentIndex].selected === opt ? 'checked' : ''}> ${opt}</label>
   `).join('');
-  
+
   document.getElementById('questionBox').innerHTML = `
     <p>${currentIndex + 1}. ${qObj.q}</p>
     ${optionsHtml}
@@ -195,27 +198,48 @@ function showQuestion() {
 
 function nextQuestion() {
   const selected = document.querySelector('input[name="option"]:checked');
-  if (selected) {
-    if (selected.value === currentQuiz[currentIndex].a) {
-      correct++;
-    } else {
-      incorrect++;
-    }
-  } else {
-    skipped++;
-  }
+  const selectedValue = selected ? selected.value : null;
+
+  userAnswers[currentIndex] = {
+    q: currentQuiz[currentIndex].q,
+    selected: selectedValue,
+    correct: currentQuiz[currentIndex].a
+  };
+
   currentIndex++;
   showQuestion();
 }
 
+function backQuestion() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showQuestion();
+  }
+}
+
 function finishQuiz() {
   clearInterval(timer);
+  correct = 0;
+  incorrect = 0;
+  skipped = 0;
+
+  userAnswers.forEach(ans => {
+    if (!ans || ans.selected === null) {
+      skipped++;
+    } else if (ans.selected === ans.correct) {
+      correct++;
+    } else {
+      incorrect++;
+    }
+  });
+
   localStorage.setItem('result', JSON.stringify({
     name: userName,
     id: userId,
     correct,
     incorrect,
-    skipped
+    skipped,
+    details: userAnswers
   }));
   window.location.href = 'result.html';
 }

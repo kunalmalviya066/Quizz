@@ -124,13 +124,14 @@ const quizzes = {
 
 };
 
+
 let currentQuiz = [];
 let currentIndex = 0;
 let correct = 0;
 let incorrect = 0;
 let skipped = 0;
 let timer;
-let timeLeft = 1200;
+let timeLeft = 1200; // 20 minutes
 
 let userName = '';
 let userId = '';
@@ -153,15 +154,17 @@ function proceedToQuizSelection() {
 }
 
 function startQuiz(quizNumber) {
-  currentQuiz = quizzes[quizNumber];
+  currentQuiz = quizzes[quizNumber] || [];
   currentIndex = 0;
   correct = 0;
   incorrect = 0;
   skipped = 0;
   timeLeft = 1200;
   userAnswers = [];
+
   document.getElementById('quizInfo').style.display = 'none';
   document.getElementById('quizBox').style.display = 'block';
+
   startTimer();
   showQuestion();
 }
@@ -185,9 +188,12 @@ function showQuestion() {
     finishQuiz();
     return;
   }
+
   const qObj = currentQuiz[currentIndex];
   const optionsHtml = qObj.options.map(opt => `
-    <label><input type="radio" name="option" value="${opt}" ${userAnswers[currentIndex] && userAnswers[currentIndex].selected === opt ? 'checked' : ''}> ${opt}</label>
+    <label>
+      <input type="radio" name="option" value="${opt}" ${userAnswers[currentIndex] && userAnswers[currentIndex].selected === opt ? 'checked' : ''}> ${opt}
+    </label>
   `).join('');
 
   document.getElementById('questionBox').innerHTML = `
@@ -207,7 +213,12 @@ function nextQuestion() {
   };
 
   currentIndex++;
-  showQuestion();
+
+  if (currentIndex >= currentQuiz.length) {
+    finishQuiz();
+  } else {
+    showQuestion();
+  }
 }
 
 function backQuestion() {
@@ -219,6 +230,7 @@ function backQuestion() {
 
 function finishQuiz() {
   clearInterval(timer);
+
   correct = 0;
   incorrect = 0;
   skipped = 0;
@@ -233,13 +245,21 @@ function finishQuiz() {
     }
   });
 
-  localStorage.setItem('result', JSON.stringify({
+  const resultData = {
     name: userName,
     id: userId,
     correct,
     incorrect,
     skipped,
-    details: userAnswers
-  }));
+    details: userAnswers,
+    timestamp: new Date().toLocaleString()
+  };
+
+  localStorage.setItem('result', JSON.stringify(resultData));
+
+  let history = JSON.parse(localStorage.getItem('quizHistory')) || [];
+  history.push(resultData);
+  localStorage.setItem('quizHistory', JSON.stringify(history));
+
   window.location.href = 'result.html';
 }

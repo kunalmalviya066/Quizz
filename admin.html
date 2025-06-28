@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <h3>User Quiz History</h3>
+    <div id="historyBox" class="result-section"></div>
+    <div class="result-buttons">
+      <a href="index.html" class="btn">🏠 Home</a>
+    </div>
+  </div>
+
+  <script>
+    const history = JSON.parse(localStorage.getItem('quizHistory')) || [];
+    const box = document.getElementById('historyBox');
+
+    if (history.length === 0) {
+      box.innerHTML = '<p>No quiz history found.</p>';
+    } else {
+      box.innerHTML = history.map((entry, index) => `
+        <div class="result-section">
+          <p><strong>#${index + 1}</strong></p>
+          <p><strong>Name:</strong> <span>${entry.name}</span></p>
+          <p><strong>ID:</strong> <span>${entry.id}</span></p>
+          <p><strong>Correct:</strong> <span>${entry.correct}</span></p>
+          <p><strong>Incorrect:</strong> <span>${entry.incorrect}</span></p>
+          <p><strong>Skipped:</strong> <span>${entry.skipped}</span></p>
+          <p><strong>Time:</strong> <span>${entry.timestamp}</span></p>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

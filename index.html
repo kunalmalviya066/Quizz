@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,6 +14,28 @@
       <a class="btn" href="quiz.html">Start Quiz</a>
     </div>
   </header>
+
+  <!-- ✅ Small trigger button -->
+  <button class="admin-trigger" onclick="openAdminLogin()">Admin Login</button>
+
+  <!-- ✅ Hidden admin modal -->
+  <div class="admin-login-modal" id="adminModal" style="display:none;">
+    <div class="admin-modal-content">
+      <h4>Admin Login</h4>
+      <input type="text" id="adminId" placeholder="Admin ID" />
+      <input type="password" id="adminPassword" placeholder="Password" />
+      <button type="button" onclick="adminLogin()">Login</button>
+      <button type="button" onclick="showReset()">Forgot?</button>
+
+      <div id="resetBox" style="display:none; margin-top:10px;">
+        <input type="text" id="masterCode" placeholder="6-digit Code" />
+        <input type="password" id="newAdminPass" placeholder="New Password" />
+        <button type="button" onclick="resetAdminPassword()">Reset</button>
+      </div>
+
+      <button type="button" onclick="closeAdminLogin()">Close</button>
+    </div>
+  </div>
 
   <main class="info-cards">
     <section class="card">
@@ -33,5 +55,7 @@
       <a href="#contact">Contact</a>
     </nav>
   </footer>
+
+  <script src="admin.js"></script>
 </body>
 </html>
